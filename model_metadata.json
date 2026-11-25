@@ -1,0 +1,101 @@
+{
+  "feature_cols": [
+    "rasio_angkut",
+    "rasio_diolah",
+    "rasio_sisa",
+    "indeks_jarak"
+  ],
+  "label_order": [
+    "SAFE",
+    "ALERT",
+    "CRITICAL"
+  ],
+  "wbi_weights": {
+    "rasio_sisa_norm": 0.3333333333333333,
+    "rasio_angkut_norm": 0.3333333333333333,
+    "indeks_jarak": 0.3333333333333333
+  },
+  "wbi_thresholds": {
+    "CRITICAL": 0.6,
+    "ALERT": 0.3
+  },
+  "wbi_reference_params": {
+    "sisa_min": 0.0,
+    "sisa_max": 1.0,
+    "angkut_min": 0.0,
+    "angkut_max": 1.0666666666666667,
+    "jarak_max": 91.0
+  },
+  "evaluation_protocol": "Stratified 5-fold CV; normalisasi, WBI, dan label dihitung ulang dari data latih di setiap fold",
+  "cv_metrics": {
+    "cv_accuracy_mean": 0.9476190476190476,
+    "cv_accuracy_std": 0.027766437594501415,
+    "cv_f1_weighted_mean": 0.9462775339636027,
+    "cv_f1_weighted_std": 0.02818517280591462,
+    "cv_f1_macro_mean": 0.9157034758268854,
+    "cv_f1_macro_std": 0.07810529097604177,
+    "classification_report": {
+      "SAFE": {
+        "precision": 0.967741935483871,
+        "recall": 0.975609756097561,
+        "f1-score": 0.97165991902834,
+        "support": 123.0
+      },
+      "ALERT": {
+        "precision": 0.9154929577464789,
+        "recall": 0.9285714285714286,
+        "f1-score": 0.9219858156028369,
+        "support": 70.0
+      },
+      "CRITICAL": {
+        "precision": 0.9333333333333333,
+        "recall": 0.8235294117647058,
+        "f1-score": 0.875,
+        "support": 17.0
+      },
+      "accuracy": 0.9476190476190476,
+      "macro avg": {
+        "precision": 0.9388560755212279,
+        "recall": 0.9092368654778985,
+        "f1-score": 0.9228819115437257,
+        "support": 210.0
+      },
+      "weighted avg": {
+        "precision": 0.9475401513020778,
+        "recall": 0.9476190476190476,
+        "f1-score": 0.9472770339651639,
+        "support": 210.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        120,
+        3,
+        0
+      ],
+      [
+        4,
+        65,
+        1
+      ],
+      [
+        0,
+        3,
+        14
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "SAFE",
+      "ALERT",
+      "CRITICAL"
+    ]
+  },
+  "tree_depth": 6,
+  "tree_leaves": 15,
+  "feature_importance": {
+    "rasio_sisa": 0.5060717731450123,
+    "indeks_jarak": 0.26876156008235513,
+    "rasio_angkut": 0.214857388422115,
+    "rasio_diolah": 0.010309278350517604
+  }
+}
